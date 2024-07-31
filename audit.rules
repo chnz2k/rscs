@@ -400,6 +400,11 @@
 -a always,exit -F arch=b32 -S execve -F exec=/usr/bin/sudo -F uid!=0 -k sudocmd
 -a always,exit -F arch=b64 -S execve -F exec=/usr/bin/sudo -F uid!=0 -k sudocmd
 
+## Log all commands
+-a always,exit -F arch=b64 -S execve -k exec
+-a always,exit -F arch=b32 -S execve -k exec
+
+
 ## File Deletion Events by User
 #-a always,exit -F arch=b32 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
 #-a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
